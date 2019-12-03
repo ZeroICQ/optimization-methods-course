@@ -1,5 +1,5 @@
 import math
-
+import timeit
 import numpy as np
 import matplotlib.pyplot as plt
 import sympy as sp
@@ -53,7 +53,7 @@ def grad_method():
     while True:
         x_k_p1 = x_k - lamb * first_deriv().subs({X: x_k}).evalf()
         magnitude = mag(x_k_p1 - x_k)
-        print(magnitude)
+        # print(magnitude)
         if magnitude < eps:
             print(magnitude)
             print(x_k_p1)
@@ -63,5 +63,12 @@ def grad_method():
 
 
 if __name__ == '__main__':
+    start = timeit.timeit()
     newtone_method()
+    end = timeit.timeit()
+    print(end - start)
+
+    start = timeit.timeit()
     grad_method()
+    end = timeit.timeit()
+    print(end - start)
